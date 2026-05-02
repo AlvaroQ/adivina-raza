@@ -1,5 +1,6 @@
 package com.alvaroquintana.adivinaperro.application
 
+import com.alvaroquintana.adivinaperro.ui.recognition.RecognitionViewModel
 import com.alvaroquintana.adivinaperro.ui.game.BiggerSmallerViewModel
 import com.alvaroquintana.adivinaperro.ui.game.DescriptionViewModel
 import com.alvaroquintana.adivinaperro.ui.game.FciTriviaViewModel
@@ -39,7 +40,7 @@ val sharedModule = module {
     single<dev.gitlive.firebase.crashlytics.FirebaseCrashlytics?> {
         runCatching { Firebase.crashlytics }.getOrNull()
     }
-    factory<DataBaseSource> { BreedEsDataBaseSourceImpl(get(), get(), get()) }
+    single<DataBaseSource> { BreedEsDataBaseSourceImpl(get(), get(), get()) }
 
     factory { BreedByIdRepository(get()) }
     factory { GetBreedById(get()) }
@@ -55,4 +56,5 @@ val sharedModule = module {
     viewModelOf(::FciTriviaViewModel)
     viewModelOf(::ResultViewModel)
     viewModelOf(::InfoViewModel)
+    viewModelOf(::RecognitionViewModel)
 }

@@ -130,6 +130,24 @@
     <string name="settings_privacy_options">Privacy settings</string>
     <string name="settings_privacy_options_summary">Manage your ad consent preferences</string>
 
+    <!-- Recognition screen -->
+    <string name="identify_breed">Identify breed</string>
+    <string name="recognition_title">Breed scanner</string>
+    <string name="recognition_capture">Take photo</string>
+    <string name="recognition_analyzing">Analyzing…</string>
+    <string name="recognition_try_again">Try again</string>
+    <string name="recognition_not_recognized">Breed not recognized</string>
+    <string name="recognition_not_recognized_subtitle">Try with a clearer photo</string>
+    <string name="recognition_confidence">%1$d%%</string>
+    <string name="recognition_view_detail">View detail</string>
+    <string name="recognition_camera_permission_title">Camera required</string>
+    <string name="recognition_camera_permission_body">We need camera access to identify dog breeds from photos.</string>
+    <string name="recognition_camera_permission_button">Open settings</string>
+    <string name="recognition_error">Something went wrong</string>
+    <string name="recognition_best_match">Best match</string>
+    <string name="recognition_other_matches">Other possible breeds</string>
+    <string name="recognition_close">Close</string>
+
     <!-- Accessibility / content descriptions -->
     <string name="loading">Loading...</string>
     <string name="content_desc_splash_dog">Splash dog</string>

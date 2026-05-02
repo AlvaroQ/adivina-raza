@@ -2,6 +2,8 @@ package com.alvaroquintana.adivinaperro.application
 
 import com.alvaroquintana.adivinaperro.managers.ConsentGate
 import com.alvaroquintana.adivinaperro.managers.IntentLauncher
+import com.alvaroquintana.adivinaperro.managers.BreedClassifier
+import com.alvaroquintana.adivinaperro.managers.IosBreedClassifier
 import com.alvaroquintana.adivinaperro.managers.IosConsentGate
 import com.alvaroquintana.adivinaperro.managers.IosIntentLauncher
 import com.alvaroquintana.adivinaperro.managers.IosSettings
@@ -20,6 +22,7 @@ private val iosPlatformModule = module {
     single<SoundPlayer> { IosSoundPlayer() }
     single<IntentLauncher> { IosIntentLauncher() }
     single<ConsentGate> { IosConsentGate() }
+    single<BreedClassifier> { IosBreedClassifier() }
 }
 
 fun initKoinIos() {

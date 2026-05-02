@@ -18,6 +18,7 @@ import adivinaraza.app.generated.resources.mode_fci_trivia_subtitle
 import adivinaraza.app.generated.resources.select_mode_description
 import adivinaraza.app.generated.resources.select_mode_title
 import adivinaraza.app.generated.resources.select_subtitle
+import adivinaraza.app.generated.resources.identify_breed
 import adivinaraza.app.generated.resources.settings
 import adivinaraza.app.generated.resources.start_game
 
@@ -42,6 +43,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.CameraAlt
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -76,11 +79,13 @@ private data class ModeItem(
 
 @Composable
 fun SelectScreen(
+    showRecognition: Boolean = false,
     onNavigateToGame: () -> Unit,
     onNavigateToBiggerSmaller: () -> Unit,
     onNavigateToDescription: () -> Unit,
     onNavigateToFciTrivia: () -> Unit,
     onNavigateToLearn: () -> Unit,
+    onNavigateToRecognition: () -> Unit = {},
     onNavigateToSettings: () -> Unit
 ) {
     var showModeDialog by remember { mutableStateOf(false) }
@@ -221,6 +226,40 @@ fun SelectScreen(
                         fontSize = 18.sp,
                         color = MaterialTheme.colorScheme.primary
                     )
+                }
+            }
+
+            // Identify Breed button - outlined orange pill with camera icon
+            if (showRecognition) {
+                Surface(
+                    onClick = onNavigateToRecognition,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp),
+                    shape = PillShape,
+                    color = MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.CameraAlt,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(20.dp)
+                        )
+                        Spacer(modifier = Modifier.size(8.dp))
+                        Text(
+                            text = stringResource(Res.string.identify_breed),
+                            fontFamily = dynaPuffFamily(),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
                 }
             }
 

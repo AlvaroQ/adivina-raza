@@ -5,9 +5,9 @@ import com.alvaroquintana.data.db.AdivinaRazaDatabase
 import com.alvaroquintana.data.db.toDomain
 import com.alvaroquintana.domain.App
 import com.alvaroquintana.domain.Dog
+import com.alvaroquintana.data.time.currentTimeMillis
 import dev.gitlive.firebase.crashlytics.FirebaseCrashlytics
 import dev.gitlive.firebase.firestore.FirebaseFirestore
-import kotlinx.datetime.Clock
 
 private const val COLLECTION_BREEDS_ES = "breedES"
 private const val SYNC_COLLECTION_BREEDS_ES = "breeds_es"
@@ -24,7 +24,7 @@ class BreedEsDataBaseSourceImpl(
     private val dogsQueries get() = database.dogsQueries
     private val syncQueries get() = database.syncMetadataQueries
 
-    private fun nowMs(): Long = Clock.System.now().toEpochMilliseconds()
+    private fun nowMs(): Long = currentTimeMillis()
 
     private fun recordException(t: Throwable) {
         crashlytics?.let { runCatching { it.recordException(t) } }
@@ -203,4 +203,3 @@ class BreedEsDataBaseSourceImpl(
      */
     override suspend fun getAppsRecommended(): MutableList<App> = mutableListOf()
 }
-

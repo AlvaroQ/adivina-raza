@@ -21,17 +21,21 @@ fun BreedImage(
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop
 ) {
-    if (imageData.isBlank()) return
+    val normalized = imageData.trim()
+    if (normalized.isBlank()) return
 
-    if (imageData.startsWith("http")) {
+    if (normalized.startsWith("http", ignoreCase = true)) {
         AsyncImage(
-            model = imageData,
+            model = normalized,
             contentDescription = contentDescription,
             modifier = modifier,
-            contentScale = contentScale
+            contentScale = contentScale,
+            onError = { state ->
+                println("[BreedImage] Error loading url='$normalized': ${state.result.throwable.message}")
+            }
         )
     } else {
-        val bitmap = rememberBase64ImageBitmap(imageData)
+        val bitmap = rememberBase64ImageBitmap(normalized)
         bitmap?.let {
             Image(
                 bitmap = it,

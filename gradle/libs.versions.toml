@@ -21,6 +21,7 @@ kotlinxDatetime = "0.6.2"
 activityCompose = "1.13.0"
 coil = "3.4.0"
 kotlinxSerialization = "1.11.0"
+ktor = "3.3.1"
 navigationCompose = "2.9.7"
 jetbrainsNavigationCompose = "2.9.2"
 detekt = "1.23.8"
@@ -92,6 +93,8 @@ koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmo
 koin-core = { group = "io.insert-koin", name = "koin-core" }
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
+coil-network-ktor3 = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
+ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
 ump = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "ump" }

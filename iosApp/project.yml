@@ -12,7 +12,7 @@ settings:
     CODE_SIGN_STYLE: Manual
     CODE_SIGN_IDENTITY: ""
     "CODE_SIGN_IDENTITY[sdk=iphoneos*]": "Apple Development"
-    "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": "NO"
+    "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": "YES"
     "CODE_SIGNING_REQUIRED[sdk=iphonesimulator*]": "NO"
     ENABLE_USER_SCRIPT_SANDBOXING: "NO"
     "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "x86_64"
@@ -68,10 +68,9 @@ targets:
         TARGETED_DEVICE_FAMILY: "1,2"
         SWIFT_OBJC_BRIDGING_HEADER: ""
         # Granting keychain-access-groups so Firebase Auth can persist
-        # the anonymous-sign-in user on iOS Simulator without hitting
+        # the anonymous-sign-in user on iOS Simulator and avoid
         # SecItemCopyMatching (-34018) "A required entitlement isn't
-        # present" — the simulator entitlement check is strict even
-        # when code signing is disabled.
+        # present".
         CODE_SIGN_ENTITLEMENTS: iosApp/iosApp.entitlements
     preBuildScripts:
       - name: Build Kotlin Multiplatform Framework

@@ -24,11 +24,6 @@ kotlin {
             implementation(project(":core"))
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
-            // api() instead of implementation() so kotlinx.datetime
-            // symbols (Clock.System, etc.) link into the iOS framework
-            // built by the :app module — Kotlin/Native does not propagate
-            // implementation deps transitively across module boundaries.
-            api(libs.kotlinx.datetime)
             implementation(libs.sqldelight.coroutines)
             implementation(libs.gitlive.firebase.firestore)
             implementation(libs.gitlive.firebase.crashlytics)

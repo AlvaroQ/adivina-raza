@@ -123,6 +123,11 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.androidx.navigation.compose)
         }
+        getByName("iosMain").dependencies {
+            // Coil on iOS needs a network backend to resolve http/https URLs.
+            implementation(libs.coil.network.ktor3)
+            implementation(libs.ktor.client.darwin)
+        }
         getByName("androidUnitTest").dependencies {
             implementation(libs.junit)
             implementation(libs.mockk)

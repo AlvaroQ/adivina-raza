@@ -106,6 +106,15 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.network.okhttp)
 
+            // CameraX
+            implementation(libs.camerax.core)
+            implementation(libs.camerax.camera2)
+            implementation(libs.camerax.lifecycle)
+            implementation(libs.camerax.view)
+
+            // TFLite
+            implementation(libs.tensorflow.lite)
+
             // Ads
             implementation(libs.play.services.ads)
             implementation(libs.ump)
@@ -212,6 +221,10 @@ android {
         buildConfig = true
         compose = true
         resValues = true
+    }
+
+    androidResources {
+        noCompress += "tflite"
     }
 }
 

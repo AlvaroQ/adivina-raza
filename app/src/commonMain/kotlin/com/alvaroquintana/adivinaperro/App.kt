@@ -6,6 +6,7 @@ import adivinaraza.app.generated.resources.choose_one
 import adivinaraza.app.generated.resources.info_title
 import adivinaraza.app.generated.resources.mode_bigger_smaller
 import adivinaraza.app.generated.resources.mode_classic_title
+import adivinaraza.app.generated.resources.recognition_title
 import adivinaraza.app.generated.resources.mode_description
 import adivinaraza.app.generated.resources.mode_fci_trivia
 import adivinaraza.app.generated.resources.resultado_screen_title
@@ -57,6 +58,7 @@ import com.alvaroquintana.adivinaperro.ui.game.FciTriviaScreenContent
 import com.alvaroquintana.adivinaperro.ui.game.FciTriviaViewModel
 import com.alvaroquintana.adivinaperro.ui.game.GameScreen
 import com.alvaroquintana.adivinaperro.ui.game.GameViewModel
+import com.alvaroquintana.adivinaperro.managers.BreedClassifier
 import com.alvaroquintana.adivinaperro.ui.info.InfoScreen
 import com.alvaroquintana.adivinaperro.ui.info.InfoViewModel
 import com.alvaroquintana.adivinaperro.ui.navigation.BiggerSmaller
@@ -64,10 +66,13 @@ import com.alvaroquintana.adivinaperro.ui.navigation.Description
 import com.alvaroquintana.adivinaperro.ui.navigation.FciTrivia
 import com.alvaroquintana.adivinaperro.ui.navigation.Game
 import com.alvaroquintana.adivinaperro.ui.navigation.Info
+import com.alvaroquintana.adivinaperro.ui.navigation.Recognition
 import com.alvaroquintana.adivinaperro.ui.navigation.Result
 import com.alvaroquintana.adivinaperro.ui.navigation.Select
 import com.alvaroquintana.adivinaperro.ui.navigation.Settings as SettingsRoute
 import com.alvaroquintana.adivinaperro.ui.navigation.Splash
+import com.alvaroquintana.adivinaperro.ui.recognition.RecognitionScreen
+import com.alvaroquintana.adivinaperro.ui.recognition.RecognitionViewModel
 import com.alvaroquintana.adivinaperro.ui.result.ResultScreen
 import com.alvaroquintana.adivinaperro.ui.result.ResultViewModel
 import com.alvaroquintana.adivinaperro.ui.select.SelectScreen
@@ -160,7 +165,9 @@ private fun AppNavHost(
         }
 
         composable<Select> {
+            val breedClassifier: BreedClassifier = koinInject()
             SelectScreen(
+                showRecognition = breedClassifier.isAvailable(),
                 onNavigateToGame = {
                     Analytics.analyticsGameModeSelected(Analytics.MODE_CLASSIC)
                     navController.navigate(Game)
@@ -181,6 +188,9 @@ private fun AppNavHost(
                     Analytics.analyticsClicked(Analytics.BTN_LEARN)
                     navController.navigate(Info)
                 },
+                onNavigateToRecognition = {
+                    navController.navigate(Recognition)
+                },
                 onNavigateToSettings = {
                     Analytics.analyticsClicked(Analytics.BTN_SETTINGS)
                     navController.navigate(SettingsRoute)
@@ -192,6 +202,15 @@ private fun AppNavHost(
         composable<BiggerSmaller> { BiggerSmallerRoute(navController, adMobConfig) }
         composable<Description> { DescriptionRoute(navController, adMobConfig) }
         composable<FciTrivia> { FciTriviaRoute(navController, adMobConfig) }
+
+        composable<Recognition>(
+            enterTransition = { NavTransitions.fadeEnterTransition },
+            exitTransition = { NavTransitions.fadeExitTransition },
+            popEnterTransition = { NavTransitions.fadeEnterTransition },
+            popExitTransition = { NavTransitions.fadeExitTransition }
+        ) {
+            RecognitionRoute(navController)
+        }
 
         composable<Result>(
             enterTransition = { NavTransitions.resultEnterTransition },
@@ -599,6 +618,27 @@ private fun SettingsRouteScreen(
             },
             onPrivacyOptions = { consentGate.showPrivacyOptionsForm() },
             onPrivacyPolicy = { intentLauncher.openPrivacyPolicy() }
+        )
+    }
+}
+
+@Composable
+private fun RecognitionRoute(navController: NavHostController) {
+    val viewModel: RecognitionViewModel = koinViewModel()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    GameScreenLayout(
+        title = stringResource(Res.string.recognition_title),
+        onBackClick = { navController.popBackStack() },
+        showLives = false,
+        showBanner = false
+    ) {
+        RecognitionScreen(
+            viewModel = viewModel,
+            uiState = uiState,
+            onBreedClick = { breedId ->
+                navController.navigate(Info)
+            }
         )
     }
 }

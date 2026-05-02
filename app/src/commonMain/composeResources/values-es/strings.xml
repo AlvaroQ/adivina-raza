@@ -130,6 +130,24 @@
     <string name="settings_privacy_options">Privacidad de anuncios</string>
     <string name="settings_privacy_options_summary">Gestiona tus preferencias de consentimiento</string>
 
+    <!-- Pantalla de reconocimiento -->
+    <string name="identify_breed">Identificar raza</string>
+    <string name="recognition_title">Escáner de razas</string>
+    <string name="recognition_capture">Tomar foto</string>
+    <string name="recognition_analyzing">Analizando…</string>
+    <string name="recognition_try_again">Intentar de nuevo</string>
+    <string name="recognition_not_recognized">Raza no reconocida</string>
+    <string name="recognition_not_recognized_subtitle">Intenta con una foto más clara</string>
+    <string name="recognition_confidence">%1$d%%</string>
+    <string name="recognition_view_detail">Ver detalle</string>
+    <string name="recognition_camera_permission_title">Cámara necesaria</string>
+    <string name="recognition_camera_permission_body">Necesitamos acceso a la cámara para identificar razas de perro desde fotos.</string>
+    <string name="recognition_camera_permission_button">Abrir ajustes</string>
+    <string name="recognition_error">Algo salió mal</string>
+    <string name="recognition_best_match">Mejor coincidencia</string>
+    <string name="recognition_other_matches">Otras razas posibles</string>
+    <string name="recognition_close">Cerrar</string>
+
     <!-- Accesibilidad -->
     <string name="loading">Cargando…</string>
     <string name="content_desc_splash_dog">Perro de la pantalla de inicio</string>

@@ -24,6 +24,8 @@ class BreedEsDataBaseSourceImpl(
     private val dogsQueries get() = database.dogsQueries
     private val syncQueries get() = database.syncMetadataQueries
 
+    override suspend fun ensureSynced() = ensureSyncedIfNeeded()
+
     private fun nowMs(): Long = currentTimeMillis()
 
     private fun recordException(t: Throwable) {

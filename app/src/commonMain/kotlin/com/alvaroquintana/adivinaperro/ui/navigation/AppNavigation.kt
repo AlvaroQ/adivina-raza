@@ -28,4 +28,7 @@ data class Result(val points: Int)
 data object Info
 
 @Serializable
+data object Recognition
+
+@Serializable
 data object Settings

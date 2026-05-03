@@ -113,7 +113,7 @@ kotlin {
             implementation(libs.camerax.view)
 
             // TFLite
-            implementation(libs.tensorflow.lite)
+            implementation(libs.litert)
 
             // Ads
             implementation(libs.play.services.ads)
@@ -163,7 +163,7 @@ android {
         applicationId = "com.alvaroquintana.adivinaperro"
         minSdk = 23
         targetSdk = 36
-        versionCode = 34
+        versionCode = 36
         versionName = "3.0.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

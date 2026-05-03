@@ -5,7 +5,6 @@ import adivinaraza.app.generated.resources.recognition_analyzing
 import adivinaraza.app.generated.resources.recognition_best_match
 import adivinaraza.app.generated.resources.recognition_capture
 import adivinaraza.app.generated.resources.recognition_close
-import adivinaraza.app.generated.resources.recognition_confidence
 import adivinaraza.app.generated.resources.recognition_error
 import adivinaraza.app.generated.resources.recognition_not_recognized
 import adivinaraza.app.generated.resources.recognition_not_recognized_subtitle
@@ -411,7 +410,7 @@ private fun ConfidenceBar(percent: Int) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = stringResource(Res.string.recognition_confidence, percent),
+                text = "$percent%",
                 fontFamily = dynaPuffFamily(),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
@@ -525,7 +524,7 @@ private fun ConfidenceBadge(percent: Int) {
         color = confidenceColor(percent).copy(alpha = 0.12f)
     ) {
         Text(
-            text = stringResource(Res.string.recognition_confidence, percent),
+            text = "$percent%",
             modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
             fontFamily = dynaPuffFamily(),
             fontWeight = FontWeight.Bold,

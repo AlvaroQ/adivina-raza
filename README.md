@@ -32,11 +32,23 @@ It is also a production-grade reference for:
 
 ## Edge AI: Breed Recognition
 
-<table align="center">
+AdivinaRaza ships with a **MobileNet V2** model optimised and compiled to **TensorFlow Lite**, running inference **100% on-device** with zero network dependency.
+
+<table>
   <tr>
     <td width="50%">
 
-AdivinaRaza ships with a **MobileNet V2** model optimised and compiled to **TensorFlow Lite**, running inference **100% on-device** with zero network dependency.
+**Key specs:**
+| Metric           | Value                    |
+| ---------------- | ------------------------ |
+| Model            | MobileNet V2 (optimised) |
+| Input            | 224×224 RGB              |
+| Classes          | 120 breeds               |
+| Latency          | ~milliseconds on-device  |
+| Network required | No                       |
+
+</td>
+    <td width="50%">
 
 **How it works (Android):**
 1. Camera captures a photo via CameraX
@@ -45,19 +57,7 @@ AdivinaRaza ships with a **MobileNet V2** model optimised and compiled to **Tens
 4. Top 5 predictions are displayed with confidence percentages
 5. Tap any result to see full breed details
 
-**Key specs:**
-| Metric               | Value                    |
-| -------------------- | ------------------------ |
-| Model                | MobileNet V2 (optimised) |
-| Input                | 224×224 RGB              |
-| Classes              | 120 breeds               |
-| Latency              | ~milliseconds on-device  |
-| Network required     | No                       |
-
 </td>
-    <td width="50%" align="center">
-      <img src="docs/images/store/dog_recognize_banner.png" width="360" alt="Edge AI breed recognition">
-    </td>
   </tr>
 </table>
 
@@ -75,17 +75,6 @@ The `BreedClassifier` interface lives in `commonMain` — Android provides the p
     <td align="center"><img src="docs/images/store/breed_information.jpg" width="220"><br/><sub>Breed detail & care info</sub></td>
   </tr>
 </table>
-
----
-
-## Game Modes
-
-| Mode                     | What you guess                                       |
-| ------------------------ | ---------------------------------------------------- |
-| **Classic**              | Dog breed from its photo                             |
-| **Bigger or Smaller**    | Which breed is heavier or taller between two options |
-| **Guess by Description** | Dog breed from a text description of its traits      |
-| **FCI Trivia**           | FCI group classification for a given breed           |
 
 ---
 
@@ -188,7 +177,7 @@ All tests run on the JVM — no device, no emulator. Every push and pull request
 
 | Module     | Tests  | What's covered                                                                                                                                                                |
 | ---------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app`      | 32     | ViewModels (`GameViewModel`, `BiggerSmallerViewModel`, `DescriptionViewModel`, `FciTriviaViewModel`, `InfoViewModel`, `ResultViewModel`, `RecognitionViewModel`) |
+| `app`      | 32     | ViewModels (`GameViewModel`, `BiggerSmallerViewModel`, `DescriptionViewModel`, `FciTriviaViewModel`, `InfoViewModel`, `ResultViewModel`, `RecognitionViewModel`)              |
 | `usecases` | 14     | `GetBreedById`, `GetBreedList`, `GetRandomBreedsWithWeight`, `GetRandomBreedsWithDescription`, `GetRandomBreedsWithFciGroup`, `GetRandomBreedsWithCare`, `GetAppsRecommended` |
 | `data`     | 13     | `BreedByIdRepository`, `AppsRecommendedRepository`, `BreedEsMapper`                                                                                                           |
 | **Total**  | **59** | **0 failures · 0 flaky · 0 skipped**                                                                                                                                          |

@@ -139,7 +139,6 @@
     <string name="recognition_try_again">Try again</string>
     <string name="recognition_not_recognized">Breed not recognized</string>
     <string name="recognition_not_recognized_subtitle">Try with a clearer photo</string>
-    <string name="recognition_confidence">%1$d%%</string>
     <string name="recognition_view_detail">View detail</string>
     <string name="recognition_camera_permission_title">Camera required</string>
     <string name="recognition_camera_permission_body">We need camera access to identify dog breeds from photos.</string>

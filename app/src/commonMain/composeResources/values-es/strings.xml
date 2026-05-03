@@ -139,7 +139,6 @@
     <string name="recognition_try_again">Intentar de nuevo</string>
     <string name="recognition_not_recognized">Raza no reconocida</string>
     <string name="recognition_not_recognized_subtitle">Intenta con una foto más clara</string>
-    <string name="recognition_confidence">%1$d%%</string>
     <string name="recognition_view_detail">Ver detalle</string>
     <string name="recognition_camera_permission_title">Cámara necesaria</string>
     <string name="recognition_camera_permission_body">Necesitamos acceso a la cámara para identificar razas de perro desde fotos.</string>

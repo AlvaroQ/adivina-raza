@@ -20,7 +20,7 @@ class GameViewModel(private val getRandomBreedsWithDescription: GetRandomBreedsW
     private val _question = MutableStateFlow("")
     val question: StateFlow<String> = _question.asStateFlow()
 
-    private val _responseOptions = MutableSharedFlow<MutableList<String>>(replay = 0, extraBufferCapacity = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+    private val _responseOptions = MutableSharedFlow<MutableList<String>>(replay = 1, extraBufferCapacity = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
     val responseOptions: SharedFlow<MutableList<String>> = _responseOptions.asSharedFlow()
 
     private val _progress = MutableStateFlow<UiModel>(UiModel.Loading(false))

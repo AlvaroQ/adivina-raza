@@ -3,10 +3,6 @@ package com.alvaroquintana.adivinaperro.ui.game
 import adivinaraza.app.generated.resources.Res
 import adivinaraza.app.generated.resources.question_guess_breed
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,7 +36,6 @@ import com.alvaroquintana.adivinaperro.ui.components.QuestionCard
 import androidx.compose.material3.MaterialTheme
 import com.alvaroquintana.adivinaperro.ui.theme.dynaPuffFamily
 import com.alvaroquintana.adivinaperro.utils.Constants.TOTAL_BREED
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
 import com.alvaroquintana.adivinaperro.ui.theme.getBackgroundGradient
 
@@ -58,7 +54,6 @@ fun GameScreen(
             (progress as GameViewModel.UiModel.Loading).show
 
     var options by remember { mutableStateOf(listOf("", "", "", "")) }
-    var buttonsVisible by remember { mutableStateOf(false) }
     var buttonsEnabled by remember { mutableStateOf(true) }
     val answerStates = remember { mutableStateListOf(AnswerState.NEUTRAL, AnswerState.NEUTRAL, AnswerState.NEUTRAL, AnswerState.NEUTRAL) }
 
@@ -69,14 +64,6 @@ fun GameScreen(
                 answerStates[i] = AnswerState.NEUTRAL
             }
             buttonsEnabled = true
-
-            if (stage == 1) {
-                buttonsVisible = true
-            } else {
-                buttonsVisible = false
-                delay(50)
-                buttonsVisible = true
-            }
         }
     }
 
@@ -104,9 +91,8 @@ fun GameScreen(
             score = points
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
-        // Question image area
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -128,9 +114,8 @@ fun GameScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
-        // Question text
         Text(
             text = stringResource(Res.string.question_guess_breed),
             fontFamily = dynaPuffFamily(),
@@ -139,40 +124,32 @@ fun GameScreen(
             color = MaterialTheme.colorScheme.onBackground
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
-        // Answer options
-        AnimatedVisibility(
-            visible = buttonsVisible && !isLoading,
-            enter = if (stage <= 1) {
-                fadeIn(animationSpec = tween(100))
-            } else {
-                slideInHorizontally(
-                    initialOffsetX = { it },
-                    animationSpec = tween(200)
-                )
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            OptionGrid(options = options, modifier = Modifier.fillMaxWidth()) { index, option, cardModifier ->
-                AnswerOptionCard(
-                    text = option,
-                    state = answerStates[index],
-                    enabled = buttonsEnabled,
-                    modifier = cardModifier,
-                    onClick = {
-                        if (buttonsEnabled) {
-                            buttonsEnabled = false
-                            val correctName: String = viewModel.getNameBreedCorrect()
-                            applyAnswerFeedbackStates(answerStates, options, correctName, index)
-                            onAnswerSelected(index, correctName, options)
-                        }
+        val optionsReady = options.any { it.isNotEmpty() }
+        OptionGrid(
+            options = options,
+            modifier = Modifier
+                .fillMaxWidth()
+                .alpha(if (optionsReady) 1f else 0f)
+        ) { index, option, cardModifier ->
+            AnswerOptionCard(
+                text = option,
+                state = answerStates[index],
+                enabled = buttonsEnabled && optionsReady,
+                modifier = cardModifier,
+                onClick = {
+                    if (buttonsEnabled) {
+                        buttonsEnabled = false
+                        val correctName: String = viewModel.getNameBreedCorrect()
+                        applyAnswerFeedbackStates(answerStates, options, correctName, index)
+                        onAnswerSelected(index, correctName, options)
                     }
-                )
-            }
+                }
+            )
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(12.dp))
     }
 }
 

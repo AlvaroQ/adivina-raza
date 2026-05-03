@@ -14,7 +14,7 @@
   <g filter="url(#shadow)">
     <rect x="30" y="55" width="660" height="90" rx="12" fill="url(#gApp)"/>
     <text x="360" y="82" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">:app</text>
-    <text x="360" y="102" text-anchor="middle" font-size="11" fill="#E1F5FE">Compose Screens · ViewModels · Koin Modules · DataSource Impl · Room DB · Firebase</text>
+    <text x="360" y="102" text-anchor="middle" font-size="11" fill="#E1F5FE">Compose Screens · ViewModels · Koin Modules · TFLite Classifier · CameraX · Firebase</text>
     <text x="360" y="120" text-anchor="middle" font-size="11" fill="#E1F5FE">Navigation · AdMob · Analytics · Crashlytics · ConsentManager</text>
   </g>
 
@@ -35,7 +35,7 @@
   <g filter="url(#shadow)">
     <rect x="190" y="275" width="340" height="70" rx="12" fill="url(#gDat)"/>
     <text x="360" y="302" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">:data</text>
-    <text x="360" y="322" text-anchor="middle" font-size="11" fill="#FFF3E0">Repository interfaces · DataSource interfaces · Mappers</text>
+    <text x="360" y="322" text-anchor="middle" font-size="11" fill="#FFF3E0">Repositories · DataSource interfaces · Mappers · SQLDelight</text>
   </g>
 
   <!-- Arrow data → domain -->
@@ -44,11 +44,11 @@
   <!-- domain module -->
   <g filter="url(#shadow)">
     <rect x="230" y="375" width="260" height="36" rx="10" fill="url(#gDom)"/>
-    <text x="360" y="398" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">:domain</text>
+    <text x="360" y="398" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">:core</text>
   </g>
 
   <!-- domain subtitle below -->
-  <text x="360" y="398" text-anchor="middle" font-size="10" fill="#FFEBEE" dy="18">Dog · GameMode · App — Pure Kotlin, zero Android imports</text>
+  <text x="360" y="398" text-anchor="middle" font-size="10" fill="#FFEBEE" dy="18">Dog · GameMode · App — Pure Kotlin, zero platform imports</text>
 
   <!-- Arrowhead marker -->
   <defs>

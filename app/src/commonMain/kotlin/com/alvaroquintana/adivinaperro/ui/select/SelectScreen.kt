@@ -18,6 +18,7 @@ import adivinaraza.app.generated.resources.mode_fci_trivia_subtitle
 import adivinaraza.app.generated.resources.select_mode_description
 import adivinaraza.app.generated.resources.select_mode_title
 import adivinaraza.app.generated.resources.select_subtitle
+import adivinaraza.app.generated.resources.experimental
 import adivinaraza.app.generated.resources.identify_breed
 import adivinaraza.app.generated.resources.settings
 import adivinaraza.app.generated.resources.start_game
@@ -43,8 +44,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.CameraAlt
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -229,7 +228,7 @@ fun SelectScreen(
                 }
             }
 
-            // Identify Breed button - outlined orange pill with camera icon
+            // Identify Breed button - outlined orange pill with experimental badge
             if (showRecognition) {
                 Surface(
                     onClick = onNavigateToRecognition,
@@ -245,13 +244,6 @@ fun SelectScreen(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        Icon(
-                            imageVector = Icons.Rounded.CameraAlt,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Spacer(modifier = Modifier.size(8.dp))
                         Text(
                             text = stringResource(Res.string.identify_breed),
                             fontFamily = dynaPuffFamily(),
@@ -259,6 +251,20 @@ fun SelectScreen(
                             fontSize = 18.sp,
                             color = MaterialTheme.colorScheme.primary
                         )
+                        Spacer(modifier = Modifier.size(8.dp))
+                        Surface(
+                            shape = RoundedCornerShape(4.dp),
+                            color = MaterialTheme.colorScheme.primary
+                        ) {
+                            Text(
+                                text = stringResource(Res.string.experimental),
+                                fontFamily = dynaPuffFamily(),
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 10.sp,
+                                color = MaterialTheme.colorScheme.onPrimary,
+                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                            )
+                        }
                     }
                 }
             }

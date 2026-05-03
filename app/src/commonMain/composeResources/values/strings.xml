@@ -132,6 +132,7 @@
 
     <!-- Recognition screen -->
     <string name="identify_breed">Identify breed</string>
+    <string name="experimental">Experimental</string>
     <string name="recognition_title">Breed scanner</string>
     <string name="recognition_capture">Take photo</string>
     <string name="recognition_analyzing">Analyzing…</string>

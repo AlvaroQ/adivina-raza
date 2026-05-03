@@ -132,6 +132,7 @@
 
     <!-- Pantalla de reconocimiento -->
     <string name="identify_breed">Identificar raza</string>
+    <string name="experimental">Experimental</string>
     <string name="recognition_title">Escáner de razas</string>
     <string name="recognition_capture">Tomar foto</string>
     <string name="recognition_analyzing">Analizando…</string>

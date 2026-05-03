@@ -25,7 +25,7 @@ ktor = "3.3.1"
 navigationCompose = "2.9.7"
 jetbrainsNavigationCompose = "2.9.2"
 camerax = "1.4.2"
-tensorflowLite = "2.17.0"
+litert = "2.1.0"
 detekt = "1.23.8"
 junit = "4.13.2"
 mockk = "1.14.9"
@@ -108,7 +108,7 @@ camerax-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", vers
 camerax-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
 
 # TFLite
-tensorflow-lite = { group = "org.tensorflow", name = "tensorflow-lite", version.ref = "tensorflowLite" }
+litert = { group = "com.google.ai.edge.litert", name = "litert", version.ref = "litert" }
 
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 

@@ -156,15 +156,15 @@ kotlin {
 }
 
 android {
-    compileSdk = 36
+    compileSdk = libs.versions.compileSdk.get().toInt()
     namespace = "com.alvaroquintana.adivinaperro"
 
     defaultConfig {
         applicationId = "com.alvaroquintana.adivinaperro"
-        minSdk = 23
-        targetSdk = 36
-        versionCode = 36
-        versionName = "3.0.2"
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

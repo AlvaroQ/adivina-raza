@@ -62,3 +62,12 @@
 -keepnames class com.alvaroquintana.adivinaperro.ui.navigation.**
 -keep class com.alvaroquintana.adivinaperro.ui.navigation.**$$serializer { *; }
 
+# Room (transitive via WorkManager from Firebase/Play Services)
+-keep class * extends androidx.room.RoomDatabase { *; }
+-keep @androidx.room.Database class * { *; }
+-keep @androidx.room.Dao class * { *; }
+
+# WorkManager (transitive from Firebase/Play Services)
+-keep class androidx.work.** { *; }
+-keep class * extends androidx.work.ListenableWorker { *; }
+

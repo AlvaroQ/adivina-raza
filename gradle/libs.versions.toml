@@ -1,4 +1,10 @@
 [versions]
+minSdk = "23"
+targetSdk = "37"
+compileSdk = "37"
+versionCode = "37"
+versionName = "3.0.2"
+
 kotlin = "2.3.20"
 agp = "9.1.1"
 coroutines = "1.10.2"
